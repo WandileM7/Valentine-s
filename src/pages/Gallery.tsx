@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 
 function Gallery() {
   const photos = [
-    "https://photos.google.com/photo/AF1QipNjeuoQplBjyaS6N4-079aUuKOtnb5erfsP4VQG",
-    "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&h=500&fit=crop"
+    "/images/Pe373/image1.jpg",
+    "/images/Pe373/image2.jpg",
+    "/images/Pe373/image3.jpg",
+    "/images/Pe373/image4.jpg",
+    "/images/Pe373/image5.jpg",
+    "/images/Pe373/image6.jpg",
+    "/images/Pe373/image7.jpg"
   ];
 
   return (
