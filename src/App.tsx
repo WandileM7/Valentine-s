@@ -6,21 +6,32 @@ import Gallery from './pages/Gallery';
 
 function App() {
   const [isMuted, setIsMuted] = useState(false);
+  const [audioError, setAudioError] = useState(false);
 
   return (
     <BrowserRouter>
       {/* Global Audio Player */}
-      <audio loop autoPlay muted={isMuted}>
+      <audio 
+        loop 
+        autoPlay 
+        muted={isMuted}
+        onError={(e) => {
+          console.error("Audio failed to load:", e);
+          setAudioError(true);
+        }}
+      >
         <source src="/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
       </audio>
 
       {/* Global Mute Button */}
-      <button 
-        onClick={() => setIsMuted(!isMuted)}
-        className="fixed top-4 right-4 z-50 bg-white p-3 rounded-full shadow-lg hover:bg-pink-50 transition-colors"
-      >
-        {isMuted ? <VolumeX className="w-6 h-6 text-gray-600" /> : <Volume2 className="w-6 h-6 text-gray-600" />}
-      </button>
+      {!audioError && (
+        <button 
+          onClick={() => setIsMuted(!isMuted)}
+          className="fixed top-4 right-4 z-50 bg-white p-3 rounded-full shadow-lg hover:bg-pink-50 transition-colors"
+        >
+          {isMuted ? <VolumeX className="w-6 h-6 text-gray-600" /> : <Volume2 className="w-6 h-6 text-gray-600" />}
+        </button>
+      )}
 
       <Routes>
         <Route path="/" element={<Letter />} />
