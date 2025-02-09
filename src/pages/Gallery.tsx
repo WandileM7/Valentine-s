@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, ArrowLeft, Loader2 } from 'lucide-react';
+import { Heart, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 function Gallery() {
@@ -18,30 +18,13 @@ function Gallery() {
     setImagesLoaded(prev => prev + 1);
   };
 
-  const loadingProgress = (imagesLoaded / totalImages) * 100;
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-red-50 p-8">
       {imagesLoaded < totalImages && (
-        <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
-          <div className="text-center max-w-md mx-auto p-8">
-            <div className="relative mb-8">
-              <Loader2 className="w-16 h-16 text-pink-500 animate-spin" />
-              <Heart className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-pink-600" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Loading Our Memories</h2>
-            <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-              <div 
-                className="h-full bg-pink-500 rounded-full transition-all duration-300 ease-out"
-                style={{ width: `${loadingProgress}%` }}
-              />
-            </div>
-            <p className="text-gray-600">
-              {imagesLoaded} of {totalImages} photos loaded
-            </p>
-            <p className="text-sm text-gray-500 mt-2 italic">
-              Each photo holds a special moment...
-            </p>
+        <div className="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
+          <div className="text-center">
+            <Heart className="w-12 h-12 text-pink-500 animate-pulse mb-4" />
+            <p className="text-gray-600">Loading memories... {imagesLoaded}/{totalImages}</p>
           </div>
         </div>
       )}
@@ -65,12 +48,7 @@ function Gallery() {
           {photos.map((photo, index) => (
             <div 
               key={index} 
-              className={`relative aspect-square overflow-hidden rounded-lg shadow-lg group transition-transform duration-500 ${
-                imagesLoaded === totalImages ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-              }`}
-              style={{
-                transitionDelay: `${index * 150}ms`
-              }}
+              className="relative aspect-square overflow-hidden rounded-lg shadow-lg group"
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
@@ -87,7 +65,7 @@ function Gallery() {
                 onLoad={handleImageLoad}
                 onError={(e) => {
                   console.error(`Failed to load image: ${photo}`);
-                  (e.target as HTMLImageElement).src = '/fallback-image.jpg';
+                  (e.target as HTMLImageElement).src = '/fallback-image.jpg'; // Make sure to add a fallback image in public folder
                 }}
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
