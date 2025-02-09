@@ -51,11 +51,6 @@ function Gallery() {
               className="relative aspect-square overflow-hidden rounded-lg shadow-lg group"
               role="button"
               tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  // You could add functionality here to show the image in a modal
-                }
-              }}
             >
               <img 
                 src={photo} 
@@ -65,7 +60,7 @@ function Gallery() {
                 onLoad={handleImageLoad}
                 onError={(e) => {
                   console.error(`Failed to load image: ${photo}`);
-                  (e.target as HTMLImageElement).src = '/fallback-image.jpg'; // Make sure to add a fallback image in public folder
+                  (e.target as HTMLImageElement).src = '/fallback-image.jpg'; 
                 }}
               />
               <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

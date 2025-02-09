@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Volume2, VolumeX, Camera, Stars, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAudio } from "../context/AudioProvider";
+
 
 function Letter() {
-  const [isMuted, setIsMuted] = useState(false);
+  const { isMuted, toggleMute } = useAudio();
+
   const [showSparkle, setShowSparkle] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -62,16 +65,13 @@ function Letter() {
         />
       </div>
 
-      {/* Audio Player */}
-      <button 
-        onClick={() => setIsMuted(!isMuted)}
+      {/* Mute Button */}
+      <button
+        onClick={toggleMute}
         className="fixed top-4 right-4 z-50 bg-white p-3 rounded-full shadow-lg hover:bg-pink-50 transition-colors"
       >
         {isMuted ? <VolumeX className="w-6 h-6 text-gray-600" /> : <Volume2 className="w-6 h-6 text-gray-600" />}
       </button>
-      <audio loop autoPlay muted={isMuted}>
-        <source src="/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
-      </audio>
 
       {/* Gallery Link */}
       <Link 
