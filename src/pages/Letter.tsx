@@ -70,7 +70,7 @@ function Letter() {
         {isMuted ? <VolumeX className="w-6 h-6 text-gray-600" /> : <Volume2 className="w-6 h-6 text-gray-600" />}
       </button>
       <audio loop autoPlay muted={isMuted}>
-        <source src="/src/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
+        <source src="/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
       </audio>
 
       {/* Gallery Link */}
