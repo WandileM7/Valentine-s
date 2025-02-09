@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Gallery() {
   const photos = [
-    "src/images/20241230_181530.jpg",
-    "src/images/20250114_184050.jpg",
-    "src/images/20250201_133047.jpg",
-    "src/images/20250201_174056.jpg"
+    "/images/20241230_181530.jpg",
+    "/images/20250114_184050.jpg",
+    "/images/20250201_133047.jpg",
+    "/images/20250201_174056.jpg"
   ];
 
   return (
