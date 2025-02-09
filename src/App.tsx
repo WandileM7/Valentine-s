@@ -3,19 +3,25 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Volume2, VolumeX } from 'lucide-react';
 import Letter from './pages/Letter';
 import Gallery from './pages/Gallery';
+
 function App() {
   const [isMuted, setIsMuted] = useState(false);
+
   return (
     <BrowserRouter>
+      {/* Global Audio Player */}
       <audio loop autoPlay muted={isMuted}>
         <source src="/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
       </audio>
+
+      {/* Global Mute Button */}
       <button 
         onClick={() => setIsMuted(!isMuted)}
         className="fixed top-4 right-4 z-50 bg-white p-3 rounded-full shadow-lg hover:bg-pink-50 transition-colors"
       >
         {isMuted ? <VolumeX className="w-6 h-6 text-gray-600" /> : <Volume2 className="w-6 h-6 text-gray-600" />}
       </button>
+
       <Routes>
         <Route path="/" element={<Letter />} />
         <Route path="/gallery" element={<Gallery />} />
@@ -23,4 +29,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;
