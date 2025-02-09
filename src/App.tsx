@@ -9,7 +9,7 @@ function App() {
   const [audioError, setAudioError] = useState(false);
 
   // Define the audio source as a constant
-  const AUDIO_SOURCE = '/music/daniel_caesar_get_you.mp3';
+  const AUDIO_SOURCE = './daniel_caesar_get_you.mp3';
   return (
     <BrowserRouter>
       {/* Global Audio Player */}
