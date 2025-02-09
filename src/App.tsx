@@ -8,6 +8,8 @@ function App() {
   const [isMuted, setIsMuted] = useState(false);
   const [audioError, setAudioError] = useState(false);
 
+  // Define the audio source as a constant
+  const AUDIO_SOURCE = '/music/Daniel%20Caesar%20-%20Get%20You%20(feat.%20Kali%20Uchis).mp3';
   return (
     <BrowserRouter>
       {/* Global Audio Player */}
@@ -20,7 +22,7 @@ function App() {
           setAudioError(true);
         }}
       >
-        <source src="/music/Daniel Caesar - Get You (feat. Kali Uchis).mp3" type="audio/mpeg" />
+        <source src={AUDIO_SOURCE} type="audio/mpeg" />
       </audio>
 
       {/* Global Mute Button */}

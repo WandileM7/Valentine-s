@@ -7,23 +7,19 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  // Add these optimizations
   build: {
     rollupOptions: {
       output: {
         manualChunks: {
-          // Group React dependencies together
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
         },
       },
     },
-    // Optimize large assets
-    assetsInlineLimit: 4096, // 4kb
+    assetsInlineLimit: 4096,
     chunkSizeWarningLimit: 1000,
   },
-  // Configure asset handling
-  assetsInclude: ['**/*.mp3', '**/*.jpg', '**/*.png'],
-  // Development server options
+  assetsInclude: ['**/*.mp3'],
+  publicDir: 'public',
   server: {
     port: 3000,
     open: true,
